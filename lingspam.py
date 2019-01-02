@@ -40,7 +40,11 @@ def extract_features(mail_dir):
     files = [os.path.join(mail_dir, fi) for fi in os.listdir(mail_dir)]
     features_matrix = np.zeros((len(files), 3000))
     docID = 0;
+    nb = 0;
     for fil in files:
+        print (nb)
+        nb = nb +1
+        print (fil)
         with open(fil) as fi:
             for i, line in enumerate(fi):
                 if i == 2:
