@@ -45,11 +45,13 @@ def extract_features(root_dir):
     docID = 0
     features_matrix = np.zeros((33716, 3000))
     train_labels = np.zeros(33716)
+    nb = 0
     for emails_dir in emails_dirs:
         dirs = [os.path.join(emails_dir, f) for f in os.listdir(emails_dir)]
         for mail in dirs:
             with open(mail, "r", encoding='utf-8', errors='ignore') as m:
-                print ("r")
+                nb = nb +1
+                print (nb)
                 print (mail)
                 all_words = []
                 for line in m:
@@ -70,7 +72,7 @@ def extract_features(root_dir):
 
 #root_dir = 'Enron-data-set'
 
-root_dir = '/home/mcn/enron2'
+root_dir = '/home/mcn/PycharmProjects/bololo/enron2'
 dictionary = make_Dictionary(root_dir)
 
 # Prepare feature vectors per training mail and its labels
