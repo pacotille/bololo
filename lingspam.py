@@ -68,7 +68,8 @@ dictionary = make_Dictionary(train_dir)
 
 train_labels = np.zeros(702)
 train_labels[351:701] = 1
-train_matrix = extract_features(train_dir)
+#train_matrix = extract_features(train_dir)
+train_matrix = np.load('lingspam_train_matrix.npy');
 
 # Training SVM and Naive bayes classifier and its variants
 
@@ -80,10 +81,16 @@ model2.fit(train_matrix, train_labels)
 
 # Test the unseen mails for Spam
 
-test_dir = '/home/mcn/PycharmProjects/bololo/test-mails'
+#test_dir = '/home/mcn/PycharmProjects/bololo/test-mails-small'
+#test_matrix = extract_features(test_dir)
+#test_labels = np.zeros(260)
+#test_labels[130:260] = 1
+
+test_dir = '/home/mcn/PycharmProjects/bololo/test-mails-small'
 test_matrix = extract_features(test_dir)
-test_labels = np.zeros(260)
-test_labels[130:260] = 1
+test_labels = np.zeros(1)
+test_labels[0] = 1
+
 
 result1 = model1.predict(test_matrix)
 result2 = model2.predict(test_matrix)
